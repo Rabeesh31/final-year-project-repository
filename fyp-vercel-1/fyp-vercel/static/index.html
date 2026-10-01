@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7c5cff">
+<title>FYP Repository</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎓%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f4ff;--card:#ffffffcc;--tx:#17142e;--mu:#6d6a8a;--bd:#e4e0f7;--ac:#6d4aff;--ac2:#efeaff;--hd:#ffffffb8;--ok:#10b981;--er:#e11d48;--sh:#6d4aff22;--hl:#ffffff}
+:root[data-theme="dark"]{--bg:#0a0818;--card:#161230cc;--tx:#f0eeff;--mu:#a29fc4;--bd:#2a2551;--ac:#9b82ff;--ac2:#241e4d;--hd:#0f0b24b8;--sh:#9b82ff33;--hl:#ffffff10}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+h1,h2,h3,.logo{font-family:Sora,"DM Sans",system-ui,sans-serif;letter-spacing:-.02em}
+a{color:var(--ac)}
+::selection{background:#8b5cf6;color:#fff}
+/* living background */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;animation:float 20s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:50vmax;height:50vmax;background:#7c5cff;top:-18vmax;left:-12vmax}
+.aurora i:nth-child(2){width:44vmax;height:44vmax;background:#ff5ca8;top:30vh;right:-16vmax;animation-delay:-7s;opacity:.26}
+.aurora i:nth-child(3){width:40vmax;height:40vmax;background:#22d3ee;bottom:-18vmax;left:20vw;animation-delay:-13s;opacity:.28}
+.aurora::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--bd) 1px,transparent 1.2px);background-size:26px 26px;mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 75%);opacity:.7}
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;background:linear-gradient(90deg,#7c5cff,#ff5ca8,#22d3ee);box-shadow:0 0 12px #7c5cff;transition:width .4s,opacity .3s;opacity:0}
+/* header */
+header{background:var(--hd);backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:14px;padding:10px 22px;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;animation:drop .6s cubic-bezier(.2,.8,.2,1)}
+.logo{font-weight:800;font-size:18px;white-space:nowrap;display:flex;align-items:center;gap:10px}
+.logo svg{width:34px;height:34px;filter:drop-shadow(0 4px 10px #7c5cff77);animation:bob 4s ease-in-out infinite}
+.logo span,.grad{background:linear-gradient(90deg,#7c5cff,#ff5ca8,#22d3ee,#7c5cff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 6s linear infinite}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav a{color:var(--mu);text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap;font-size:14px;font-weight:500;transition:.25s;position:relative}
+nav a:hover{color:var(--tx);background:var(--ac2)}
+nav a.on{color:#fff;background:linear-gradient(135deg,#7c5cff,#ff5ca8);box-shadow:0 6px 18px #7c5cff66}
+.ico,.prof>button{background:var(--ac2);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:7px 13px;cursor:pointer;font:inherit;font-weight:500;transition:.25s}
+.ico:hover,.prof>button:hover{transform:translateY(-2px);box-shadow:0 6px 16px var(--sh)}
+.ico{width:38px;padding:7px 0;font-size:16px}.ico:hover{transform:translateY(-2px) rotate(25deg)}
+.prof{position:relative}
+.menu{position:absolute;right:0;top:120%;background:var(--card);backdrop-filter:blur(18px);color:var(--tx);border:1px solid var(--bd);border-radius:16px;padding:10px;min-width:220px;box-shadow:0 20px 50px #0003;animation:pop .22s}
+.menu div{padding:8px 10px;color:var(--mu);font-size:13px}.menu[hidden]{display:none}
+main{max-width:1120px;margin:0 auto;padding:26px 16px 40px}
+h1{font-size:30px;margin:0 0 6px;line-height:1.15}.sub{color:var(--mu);margin:0 0 20px}
+footer{text-align:center;color:var(--mu);font-size:12px;padding:0 16px 30px}
+/* hero */
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,5vw,44px);max-width:640px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;color:var(--ac);background:var(--ac2);padding:5px 12px;border-radius:20px;margin:0 0 12px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 #10b981aa;animation:ping 1.8s infinite}
+/* cards */
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd);border-radius:20px;padding:20px;box-shadow:0 8px 30px var(--sh);position:relative;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),#7c5cff26,transparent 60%)}
+.card:hover::before{opacity:1}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.g3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.stat{border:0;color:#fff;overflow:hidden;min-height:120px}
+.stat b{display:block;font:800 40px/1.1 Sora,sans-serif;margin-top:6px}.stat small{color:#ffffffd9;font-weight:500}
+.stat::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:#ffffff26;animation:bob 5s ease-in-out infinite}
+.stat:nth-child(1){background:linear-gradient(135deg,#6d4aff,#a78bfa)}.stat:nth-child(2){background:linear-gradient(135deg,#ec4899,#fb7185)}
+.stat:nth-child(3){background:linear-gradient(135deg,#0ea5e9,#22d3ee)}.stat:nth-child(4){background:linear-gradient(135deg,#f59e0b,#fb923c)}
+.stat:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 40px #0003}
+.bar{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:13px}.bar i{width:70px;font-style:normal;color:var(--mu)}
+.bar div{flex:1;background:var(--ac2);border-radius:8px;height:12px;overflow:hidden}.bar div s{display:block;height:100%;background:linear-gradient(90deg,#7c5cff,#ff5ca8);border-radius:8px;transform-origin:left}
+.bar em{width:26px;text-align:right;font-style:normal;font-weight:600}
+.badge{display:inline-block;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:600;color:#fff;box-shadow:0 3px 10px #0003}
+.tag{display:inline-block;padding:3px 10px;border-radius:8px;font-size:12px;margin:2px 4px 2px 0;font-weight:500;transition:.2s}.tag:hover{transform:scale(1.08)}
+.tag:nth-of-type(3n+1){background:#7c5cff1f;color:#7c5cff}.tag:nth-of-type(3n+2){background:#06b6d41f;color:#0891b2}.tag:nth-of-type(3n){background:#ec48991f;color:#db2777}
+.pc{display:flex;flex-direction:column;gap:9px;border-top:4px solid var(--c,var(--ac));transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));will-change:transform}
+.pc:hover{--ty:-6px;box-shadow:0 22px 44px color-mix(in srgb,var(--c,#7c5cff) 35%,transparent);border-color:color-mix(in srgb,var(--c,#7c5cff) 50%,var(--bd))}
+.pc h3{margin:0;font-size:17px;line-height:1.3}.pc p{margin:0;color:var(--mu);font-size:13px}
+.btn{background:linear-gradient(135deg,#6d4aff,#c04dff,#ff5ca8);background-size:180% 100%;color:#fff;border:0;border-radius:12px;padding:10px 18px;cursor:pointer;font:600 13px "DM Sans",sans-serif;transition:.3s;box-shadow:0 6px 18px #7c5cff55;position:relative;overflow:hidden;text-decoration:none;display:inline-block}
+.btn:hover{transform:translateY(-2px);background-position:100% 0;box-shadow:0 12px 26px #c04dff66}.btn:active{transform:scale(.96)}
+.btn.o{background:transparent;color:var(--ac);border:1px solid var(--ac);box-shadow:none}.btn.o:hover{background:var(--ac2)}
+.btn.d{background:linear-gradient(135deg,#e11d48,#f97316);box-shadow:0 6px 18px #e11d4855}.btn.s{padding:5px 11px;font-size:12px;border-radius:9px}
+.btn[disabled]{opacity:.6;cursor:wait}
+.rip{position:absolute;border-radius:50%;background:#ffffff77;transform:scale(0);animation:rip .6s ease-out;pointer-events:none}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{width:100%;padding:11px 13px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);font:inherit;transition:.25s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 4px #7c5cff33;transform:translateY(-1px)}
+label{font-size:13px;font-weight:600;display:block;margin:14px 0 5px}
+.err{color:var(--er);font-size:12px;margin-top:3px}
+.filters{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:800px){.filters{grid-template-columns:1fr 1fr}.filters>:first-child{grid-column:1/-1}header{padding:8px 12px;gap:8px}.logo b{display:none}}
+.auth{max-width:420px;margin:6vh auto;padding:30px}
+.auth{border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,conic-gradient(from var(--a),#7c5cff,#ff5ca8,#22d3ee,#7c5cff) border-box;animation:spin2 6s linear infinite,pop .6s cubic-bezier(.2,1.2,.4,1);box-shadow:0 20px 60px #7c5cff44}
+.auth h1{text-align:center;background:linear-gradient(90deg,#7c5cff,#ff5ca8,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tblw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}th{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+tr{transition:.2s}tr:hover td{background:var(--ac2)}
+.pg{display:flex;gap:6px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+.pg button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;min-width:38px;padding:7px 12px;cursor:pointer;transition:.2s}.pg button:hover{transform:translateY(-3px);border-color:var(--ac)}
+.pg .on{background:linear-gradient(135deg,#6d4aff,#ff5ca8);color:#fff;border-color:transparent;box-shadow:0 6px 16px #7c5cff55}
+.ov{position:fixed;inset:0;background:#0a081888;backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px;animation:fade .2s}
+.modal{background:var(--bg);border:1px solid var(--bd);border-radius:24px;max-width:640px;width:100%;max-height:88vh;overflow:auto;padding:26px;animation:pop .35s cubic-bezier(.2,1.2,.4,1);box-shadow:0 30px 80px #0006}
+#toast{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;padding:12px 22px;border-radius:14px;z-index:60;display:none;box-shadow:0 12px 30px #0004;font-weight:500;animation:slideup .4s cubic-bezier(.2,1.2,.4,1)}
+.act{font-size:13px;padding:9px 0;border-bottom:1px solid var(--bd);color:var(--mu)}.act:last-child{border:0}.act b{color:var(--tx)}
+.star{color:#f59e0b;display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+.hint{color:var(--mu);font-size:12px;margin:4px 0 0}.flag{font-size:12px;color:var(--mu)}
+/* loading shimmer */
+.ld{padding:36px;text-align:center;color:var(--mu);border-radius:20px;background:linear-gradient(100deg,transparent 30%,var(--ac2) 50%,transparent 70%) 0 0/250% 100%;animation:sh 1.4s infinite}
+.ld::before{content:"";display:inline-block;width:16px;height:16px;border:3px solid var(--ac2);border-top-color:var(--ac);border-radius:50%;margin-right:10px;vertical-align:-3px;animation:spin .8s linear infinite}
+/* entrance choreography */
+.anim .hero>*,.anim .card,.anim h1,.anim .sub,.anim .filters{animation:rise .7s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*70ms)}
+.anim .bar div s{animation:grow 1.1s .3s cubic-bezier(.2,.8,.2,1) backwards}
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes spin2{to{--a:360deg}}
+@keyframes rise{from{opacity:0;transform:translateY(28px) scale(.97)}}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(12px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes drop{from{transform:translateY(-100%);opacity:0}}
+@keyframes slideup{from{opacity:0;transform:translate(-50%,30px)}}
+@keyframes shift{to{background-position:250% 0}}
+@keyframes float{to{transform:translate(9vmax,7vmax) scale(1.2)}}
+@keyframes bob{50%{transform:translateY(-5px) rotate(4deg)}}
+@keyframes pulse{50%{transform:scale(1.3) rotate(15deg)}}
+@keyframes ping{70%,100%{box-shadow:0 0 0 9px #10b98100}}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes sh{to{background-position:-150% 0}}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="aurora"><i></i><i></i><i></i></div><div id="pbar"></div>
+<div id="app"></div><div id="toast"></div>
+<script>
+const DOM={AI:'#7c3aed',IoT:'#0891b2',Web:'#2563eb',Security:'#dc2626',Mobile:'#ea580c',Data:'#059669'};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+const val=id=>$('#'+id).value.trim();
+const mail=e=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
+
+/* ---------- state ---------- */
+let needSetup=false, me=null, meta={domains:[],technologies:[],years:[],departments:[]};
+let pg=1, q={s:'',d:'',t:'',a:'',b:''}, aq={d:'',y:'',p:''}, dy={a:'',b:''}, loader=null, rid=0;
+const fac=()=>me&&me.role=='faculty';
+
+/* ---------- API helper: every screen talks to Flask through this ---------- */
+async function api(url,o={}){
+ o.credentials='same-origin';
+ if(o.json!==undefined){o.method=o.method||'POST';o.headers={'Content-Type':'application/json'};o.body=JSON.stringify(o.json);delete o.json}
+ let r;try{r=await fetch(url,o)}catch(e){throw Object.assign(new Error('Cannot reach the server. Is app.py running?'),{fields:{}})}
+ let d={};try{d=await r.json()}catch(e){}
+ if(r.status==401&&me&&url!='/api/login'){me=null;toast('Session expired. Please log in again.','var(--er)');go('login')}
+ if(!r.ok)throw Object.assign(new Error(d.error||'Request failed'),{fields:d.fields||{},status:r.status});
+ return d}
+const qs=o=>{const p=new URLSearchParams();for(const k in o)if(o[k]!==''&&o[k]!=null)p.set(k,o[k]);return p.toString()};
+const errText=e=>{const v=Object.values(e.fields||{});return v.length?v.join(' '):e.message};
+async function loadMeta(){try{meta=await api('/api/meta')}catch(e){}}
+
+/* ---------- small helpers ---------- */
+function toast(m,c){const t=$('#toast');t.textContent=m;t.style.background=c||'var(--ok)';t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',2800)}
+const badge=d=>`<span class="badge" style="background:${DOM[d]||'#666'}">${esc(d)}</span>`;
+const tags=p=>p.technologies.map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+const yopts=(sel,ph)=>`<option value="">${ph}</option>`+meta.years.map(y=>`<option ${sel==y?'selected':''}>${y}</option>`).join('');
+const dopts=(sel,ph)=>`<option value="">${ph}</option>`+meta.domains.map(y=>`<option ${sel==y?'selected':''}>${y}</option>`).join('');
+const route=()=>location.hash.slice(2)||'dashboard';
+function go(h){if(location.hash=='#/'+h)render();else location.hash='#/'+h}
+window.onhashchange=()=>{pg=1;render()};
+function ago(sec){const s=Math.floor(Date.now()/1000-sec);if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+'m ago';if(s<86400)return Math.floor(s/3600)+'h ago';return Math.floor(s/86400)+'d ago'}
+function toggleMenu(){const m=$('#pm');m.hidden=!m.hidden}
+document.addEventListener('click',e=>{const m=$('#pm');if(m&&!m.hidden&&!e.target.closest('.prof'))m.hidden=true});
+
+function shell(body){
+ const r=route().split('/')[0];
+ const L=[['dashboard','Dashboard'],['browse','Browse Projects'],['add','Add Project']];
+ L.push(fac()?['admin','Admin Panel']:['mine','My Projects']);
+ return `<header><div class="logo"><svg viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset=".6" stop-color="#ff5ca8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lg)"/><path d="M20 9 6 16l14 7 11-5.5V26h2.5V16.5zM12 22.5v5c0 2 3.6 4 8 4s8-2 8-4v-5l-8 4z" fill="#fff"/></svg><b>FYP <span>Repository</span></b></div>
+ <nav>${L.map(l=>`<a href="#/${l[0]}" class="${r==l[0]?'on':''}">${l[1]}</a>`).join('')}</nav>
+ <button class="ico" onclick="theme()" title="Toggle theme">◐</button>
+ <div class="prof"><button onclick="toggleMenu()">👤 ${esc(me.name.split(' ')[0])} ▾</button>
+ <div class="menu" id="pm" hidden><div><b>${esc(me.name)}</b><br>${esc(me.email)}<br>${fac()?'Faculty/Admin · '+esc(me.department):'Student · '+esc(me.department)+' · Year '+me.year}</div><button class="btn o" style="width:100%" onclick="logout()">Logout</button></div></div></header>
+ <main>${body}</main><footer>Flask · Postgres · Trie · AVL tree · Hash map · Max-heap — all searching runs on hand-written data structures</footer>`;
+}
+async function logout(){try{await api('/api/logout',{method:'POST'})}catch(e){}me=null;go('login');toast('Logged out')}
+
+/* ---------- Auth pages ---------- */
+function authPage(k,token){
+ if(k=='login')return `<div class="card auth"><h1>🎓 FYP Repository</h1><p class="sub" style="text-align:center">Sign in to continue</p>
+ <label>Email</label><input id="em" placeholder="you@college.edu" autocomplete="username"><label>Password</label><input id="pw" type="password" autocomplete="current-password">
+ <div class="err" id="er"></div>
+ <button class="btn" id="go" style="width:100%;margin-top:14px" onclick="doLogin()">Login</button>
+ <p style="text-align:center;font-size:13px"><a href="#/forgot">Forgot password?</a> · <a href="#/signup">Student sign up</a></p>
+</div>`;
+ if(k=='signup')return `<div class="card auth"><h1>Student Sign Up</h1>
+ <label>Name</label><input id="nm"><label>Email</label><input id="em"><label>Password (min 6)</label><input id="pw" type="password">
+ <label>Department</label><select id="dp"><option>CSE</option><option>ECE</option><option>EEE</option><option>MECH</option><option>CIVIL</option></select>
+ <label>Year of study</label><select id="yr"><option>1</option><option>2</option><option>3</option><option selected>4</option></select>
+ <div class="err" id="er"></div><button class="btn" id="go" style="width:100%;margin-top:14px" onclick="doSignup()">Create account</button>
+ <p style="text-align:center;font-size:13px"><a href="#/login">Back to login</a></p></div>`;
+ if(k=='setup')return `<div class="card auth"><h1>Welcome 👋</h1><p class="sub" style="text-align:center">Create the first Faculty/Admin account to get started.</p>
+ <label>Name</label><input id="nm"><label>Email</label><input id="em"><label>Password (min 6)</label><input id="pw" type="password">
+ <label>Department</label><input id="dp" placeholder="e.g. CSE">
+ <label>Setup key (from your SETUP_KEY setting; leave blank if none)</label><input id="sk" type="password" autocomplete="off">
+ <div class="err" id="er"></div><button class="btn" id="go" style="width:100%;margin-top:14px" onclick="doSetup()">Create admin account</button></div>`;
+ if(k=='reset')return `<div class="card auth"><h1>New password</h1><p class="sub" style="text-align:center">Choose a new password for your account.</p>
+ <label>New password (min 6)</label><input id="pw" type="password"><div class="err" id="er"></div>
+ <button class="btn" id="go" style="width:100%;margin-top:14px" onclick="doReset('${esc(token)}')">Update password</button>
+ <p style="text-align:center;font-size:13px"><a href="#/login">Back to login</a></p></div>`;
+ return `<div class="card auth"><h1>Reset password</h1><p class="sub" style="text-align:center">Enter your email to get a reset link.</p>
+ <input id="em" placeholder="you@college.edu"><div class="err" id="er"></div>
+ <button class="btn" id="go" style="width:100%;margin-top:14px" onclick="doForgot()">Send reset link</button>
+ <p style="text-align:center;font-size:13px"><a href="#/login">Back to login</a></p></div>`;
+}
+async function busy(btn,fn){btn.disabled=true;try{return await fn()}finally{btn.disabled=false}}
+async function doLogin(){
+ const e=val('em').toLowerCase(),p=$('#pw').value;
+ if(!mail(e)||!p)return $('#er').textContent='Enter your email and password.';
+ await busy($('#go'),async()=>{try{const d=await api('/api/login',{json:{email:e,password:p}});me=d.user;await loadMeta();go('dashboard');toast('Welcome back, '+me.name)}catch(x){$('#er').textContent=x.message}})}
+async function doSignup(){
+ const n=val('nm'),e=val('em').toLowerCase(),p=$('#pw').value;
+ if(!n)return $('#er').textContent='Name is required.';
+ if(!mail(e))return $('#er').textContent='Enter a valid email.';
+ if(p.length<6)return $('#er').textContent='Password must be at least 6 characters.';
+ await busy($('#go'),async()=>{try{await api('/api/signup',{json:{name:n,email:e,password:p,department:val('dp'),year:val('yr')}});go('login');toast('Account created. Please log in.')}catch(x){$('#er').textContent=errText(x)}})}
+async function doSetup(){
+ const n=val('nm'),e=val('em').toLowerCase(),p=$('#pw').value,d=val('dp');
+ if(!n)return $('#er').textContent='Name is required.';
+ if(!mail(e))return $('#er').textContent='Enter a valid email.';
+ if(p.length<6)return $('#er').textContent='Password must be at least 6 characters.';
+ if(!d)return $('#er').textContent='Department is required.';
+ await busy($('#go'),async()=>{try{const r=await api('/api/setup',{json:{name:n,email:e,password:p,department:d,setup_key:$('#sk').value}});me=r.user;needSetup=false;await loadMeta();go('dashboard');toast('Admin account created. Welcome, '+me.name)}catch(x){$('#er').textContent=errText(x)}})}
+async function doForgot(){
+ const e=val('em').toLowerCase();if(!mail(e))return $('#er').textContent='Enter a valid email.';
+ await busy($('#go'),async()=>{try{const d=await api('/api/forgot',{json:{email:e}});
+  $('.auth').innerHTML=`<h1>Check your email</h1><p class="sub" style="text-align:center">${esc(d.message)}</p>
+  ${d.demo_token?`<p style="text-align:center"><b>Demo mode:</b> no email server is set up, so use this link directly.<br><br><a class="btn" style="text-decoration:none;display:inline-block" href="#/reset/${encodeURIComponent(d.demo_token)}">Open reset link</a></p>`:''}
+  <p style="text-align:center;font-size:13px"><a href="#/login">Back to login</a></p>`}catch(x){$('#er').textContent=x.message}})}
+async function doReset(t){
+ const p=$('#pw').value;if(p.length<6)return $('#er').textContent='Password must be at least 6 characters.';
+ await busy($('#go'),async()=>{try{await api('/api/reset',{json:{token:t,password:p}});go('login');toast('Password updated. Please log in.')}catch(x){$('#er').textContent=errText(x)}})}
+
+/* ---------- Dashboard ---------- */
+async function dashboard(){
+ const [an,ac]=await Promise.all([api('/api/analytics?'+qs({year_from:dy.a,year_to:dy.b})),api('/api/activity?limit=10'),loadMeta()]);
+ const mx=Math.max(1,...an.top_domains.map(x=>x[1])),my=Math.max(1,...an.per_year.map(x=>x[1]));
+ return shell(`<section class="hero"><div><p class="eyebrow">${greet()}, ${esc(me.name.split(' ')[0])}</p><h1>Final-year projects, <span class="grad">indexed &amp; alive.</span></h1><p class="sub" style="margin:0">Search, track and showcase every project in the repository.</p></div>
+ <div class="row"><a class="btn" href="#/browse">Explore projects</a><a class="btn o" href="#/add">+ Add project</a></div></section>
+ <div class="row" style="margin-bottom:14px"><span class="sub" style="margin:0">Year range:</span>
+ <select style="width:110px" onchange="dy.a=this.value;render()">${yopts(dy.a,'From')}</select>
+ <select style="width:110px" onchange="dy.b=this.value;render()">${yopts(dy.b,'To')}</select></div>
+ <div class="grid g4">
+ <div class="card stat"><small>Total projects</small><b data-n="${an.total}">0</b></div>
+ <div class="card stat"><small>Domains</small><b data-n="${an.domains}">0</b></div>
+ <div class="card stat"><small>Years covered</small><b data-n="${an.years_covered}">0</b></div>
+ <div class="card stat"><small>Added in last 30 days</small><b data-n="${an.last_30_days}">0</b></div></div>
+ <div class="grid g2" style="margin-top:14px">
+ <div class="card"><h3 style="margin-top:0">Top domains</h3>${an.top_domains.map(([d,c])=>`<div class="bar"><i>${esc(d)}</i><div><s style="width:${c/mx*100}%;background:${DOM[d]||'#6366f1'}"></s></div><em>${c}</em></div>`).join('')||'<p class="sub">No data</p>'}</div>
+ <div class="card"><h3 style="margin-top:0">Projects per year</h3>${an.per_year.map(([y,c])=>`<div class="bar"><i>${y}</i><div><s style="width:${c/my*100}%"></s></div><em>${c}</em></div>`).join('')||'<p class="sub">No data</p>'}</div>
+ <div class="card"><h3 style="margin-top:0">Recent projects</h3>${an.recent.map(p=>`<div class="act"><a href="javascript:void 0" onclick="detail(${p.id})"><b>${esc(p.title)}</b></a> ${badge(p.domain)}</div>`).join('')||'<p class="sub">No data</p>'}</div>
+ <div class="card"><h3 style="margin-top:0">Recent activity</h3>${ac.items.map(a=>`<div class="act">${esc(a.message)} · ${ago(a.at)}</div>`).join('')||'<p class="sub">No activity yet</p>'}</div></div>`);
+}
+
+/* ---------- Project cards + pager (server-side pagination) ---------- */
+function card(p,manage){return `<div class="card pc" style="--c:${DOM[p.domain]||'#5b5bf0'}"><div class="row" style="justify-content:space-between">${badge(p.domain)}<span class="sub" style="margin:0">${p.year} ${p.featured?'<span class="star" title="Featured">★</span>':''}${p.verified?'<span title="Verified">✔</span>':''}</span></div>
+ <h3>${esc(p.title)}</h3><p>${esc(p.abstract.slice(0,90))}…</p><div>${tags(p)}</div>
+ <div class="row"><button class="btn s" onclick="detail(${p.id})">View details</button>${p.file_url?`<a class="btn o s" style="text-decoration:none" href="${esc(p.file_url)}" target="_blank" rel="noopener" title="${esc(p.file_name)}">📎 File</a>`:''}
+ ${manage?`<button class="btn o s" onclick="go('edit/${p.id}')">Edit</button><button class="btn d s" onclick="del(${p.id})">Delete</button>`:''}</div></div>`}
+function pager(d){if(d.pages<=1)return'';return `<div class="pg">${Array.from({length:d.pages},(_,i)=>`<button class="${d.page==i+1?'on':''}" onclick="setPg(${i+1})">${i+1}</button>`).join('')}</div>`}
+function setPg(n){pg=n;loader&&loader();window.scrollTo({top:0,behavior:'smooth'})}
+function failBox(e){return `<div class="card err" style="font-size:14px">${esc(e.message)}</div>`}
+
+/* ---------- Browse ---------- */
+async function browse(){
+ await loadMeta();loader=loadBrowse;
+ return shell(`<h1>Browse Projects</h1><p class="sub" id="cnt">Loading…</p>
+ <div class="filters"><input id="qs" placeholder="🔍 Search title (prefix or keyword)…" value="${esc(q.s)}" oninput="debounceQ(this.value)">
+ <select onchange="setQ('d',this.value)">${dopts(q.d,'All domains')}</select>
+ <select onchange="setQ('t',this.value)"><option value="">All tech</option>${meta.technologies.map(t=>`<option ${q.t==t?'selected':''}>${esc(t)}</option>`).join('')}</select>
+ <select onchange="setQ('a',this.value)">${yopts(q.a,'Year from')}</select>
+ <select onchange="setQ('b',this.value)">${yopts(q.b,'Year to')}</select></div><div id="res" class="ld">Loading…</div>`);
+}
+function setQ(k,v){q[k]=v;pg=1;loadBrowse()}
+function debounceQ(v){clearTimeout(debounceQ.h);debounceQ.h=setTimeout(()=>setQ('s',v),250)}
+let bseq=0;
+async function loadBrowse(){
+ const my=++bseq,box=$('#res');if(!box)return;
+ try{const d=await api('/api/projects?'+qs({q:q.s,domain:q.d,tech:q.t,year_from:q.a,year_to:q.b,page:pg,per_page:6}));
+  if(my!=bseq||!$('#res'))return;pg=d.page;
+  $('#cnt').textContent=`${d.total} project(s) found`;box.className='';
+  box.innerHTML=`<div class="grid g3">${d.items.map(p=>card(p,false)).join('')||'<div class="card">No projects found.</div>'}</div>${pager(d)}`}
+ catch(e){box.className='';box.innerHTML=failBox(e)}}
+
+/* ---------- My Projects ---------- */
+async function mine(){
+ loader=loadMine;
+ return shell(`<h1>My Projects</h1><p class="sub" id="cnt">Loading…</p><div id="res" class="ld">Loading…</div>`)}
+async function loadMine(){
+ const box=$('#res');if(!box)return;
+ try{const d=await api('/api/projects?'+qs({mine:1,page:pg,per_page:6}));pg=d.page;
+  $('#cnt').textContent=`${d.total} project(s) uploaded by you`;box.className='';
+  box.innerHTML=d.total?`<div class="grid g3">${d.items.map(p=>card(p,true)).join('')}</div>${pager(d)}`:'<div class="card">You have not added any projects yet. <a href="#/add">Add one</a>.</div>'}
+ catch(e){box.className='';box.innerHTML=failBox(e)}}
+
+/* ---------- Detail / delete ---------- */
+function modal(html,narrow){$('#ov')&&$('#ov').remove();const o=document.createElement('div');o.className='ov';o.id='ov';o.onclick=e=>{if(e.target==o)o.remove()};
+ o.innerHTML=`<div class="modal" ${narrow?'style="max-width:380px"':''}>${html}</div>`;document.body.appendChild(o);return o}
+async function detail(id){
+ let p;try{p=await api('/api/projects/'+id)}catch(e){return toast(e.message,'var(--er)')}
+ modal(`<div class="row" style="justify-content:space-between">${badge(p.domain)}<button class="btn o s" onclick="$('#ov').remove()">✕</button></div>
+ <h2 style="margin:10px 0 4px">${esc(p.title)} ${p.featured?'<span class="star">★</span>':''}</h2>
+ <p class="sub">Year ${p.year} · by ${esc(p.uploader_name)} (${esc(p.uploader_dept)}) ${p.verified?'· ✔ Verified':''}</p>
+ <p>${esc(p.abstract)}</p><div>${tags(p)}</div>
+ <p>${p.source_url?`<a href="${esc(p.source_url)}" target="_blank" rel="noopener">🔗 Source link</a>`:'<span class="sub">No source link</span>'}${p.file_url?` · <a href="${esc(p.file_url)}" target="_blank" rel="noopener">📎 ${esc(p.file_name)}</a>`:''}</p>
+ ${p.can_edit?`<div class="row"><button class="btn" onclick="$('#ov').remove();go('edit/${p.id}')">Edit</button><button class="btn d" onclick="del(${p.id})">Delete</button></div>`:''}`)}
+function del(id){
+ modal(`<h3 style="margin-top:0">Delete project?</h3><p>This project will be permanently removed.</p>
+ <div class="row"><button class="btn d" id="yes">Delete</button><button class="btn o" onclick="$('#ov').remove()">Cancel</button></div>`,true);
+ $('#yes').onclick=async()=>{await busy($('#yes'),async()=>{try{await api('/api/projects/'+id,{method:'DELETE'});$('#ov').remove();toast('Project deleted');loader&&route().split('/')[0]!='dashboard'?loader():render()}catch(e){$('#ov').remove();toast(e.message,'var(--er)')}})}}
+
+/* ---------- Add / Edit form ---------- */
+async function form(id){
+ await loadMeta();let v={title:'',abstract:'',domain:'',year:new Date().getFullYear(),technologies:[],source_url:'',file_name:''};
+ if(id){try{v=await api('/api/projects/'+id)}catch(e){return shell(failBox(e))}
+  if(!v.can_edit)return shell('<div class="card">Not allowed.</div>')}
+ return shell(`<h1>${id?'Edit':'Add'} Project</h1><p class="sub">Fill in the project details</p><div class="card" style="max-width:700px">
+ <label>Title *</label><input id="ti" value="${esc(v.title)}"><div class="err" id="e1"></div>
+ <label>Abstract *</label><textarea id="ab" rows="5">${esc(v.abstract)}</textarea><div class="err" id="e2"></div>
+ <div class="grid" style="grid-template-columns:1fr 1fr"><div><label>Domain *</label><select id="dm">${dopts(v.domain,'Select…')}</select><div class="err" id="e3"></div></div>
+ <div><label>Year * (2015–2030)</label><input id="yr" type="number" value="${v.year}"><div class="err" id="e4"></div></div></div>
+ <label>Technologies (comma-separated)</label><input id="tc" value="${esc(v.technologies.join(', '))}">
+ <label>Source URL</label><input id="ur" placeholder="https://…" value="${esc(v.source_url)}"><div class="err" id="e5"></div>
+ <label>Report / PPT / PDF (optional, max 4 MB)</label><input id="fl" type="file" accept=".pdf,.ppt,.pptx,.doc,.docx">
+ ${v.file_name?`<p class="hint">Current file: ${esc(v.file_name)} (choose a new one to replace it)</p>`:''}<div class="err" id="e6"></div>
+ <div class="row" style="margin-top:16px"><button class="btn" id="sv" onclick="save(${id||0})">${id?'Save changes':'Add project'}</button><button class="btn o" onclick="history.back()">Cancel</button></div></div>`);
+}
+async function save(id){
+ const t=val('ti'),a=val('ab'),d=val('dm'),y=+val('yr'),u=val('ur'),f=$('#fl').files[0];let ok=true;
+ const e=(k,m)=>{$('#'+k).textContent=m||'';if(m)ok=false};
+ e('e1',t.length<5?'Title must be at least 5 characters.':'');e('e2',a.length<30?'Abstract must be at least 30 characters.':'');
+ e('e3',d?'':'Choose a domain.');e('e4',y>=2015&&y<=2030?'':'Year must be 2015–2030.');
+ e('e5',!u||/^https?:\/\//.test(u)?'':'URL must start with http:// or https://');
+ e('e6',f&&f.size>4*1024*1024?'File is larger than 4 MB.':'');
+ if(!ok)return;
+ const fd=new FormData();fd.append('title',t);fd.append('abstract',a);fd.append('domain',d);fd.append('year',y);fd.append('technologies',val('tc'));fd.append('source_url',u);if(f)fd.append('file',f);
+ await busy($('#sv'),async()=>{try{await api(id?'/api/projects/'+id:'/api/projects',{method:id?'PUT':'POST',body:fd});toast('Project saved successfully');go(fac()?'admin':'mine')}
+  catch(x){const m={title:'e1',abstract:'e2',domain:'e3',year:'e4',source_url:'e5',file:'e6'};let shown=false;
+   for(const k in x.fields||{})if(m[k]){$('#'+m[k]).textContent=x.fields[k];shown=true}
+   if(!shown||x.status==413)toast(x.status==413?'File is too large (4 MB max).':x.message,'var(--er)')}})}
+
+/* ---------- Admin panel ---------- */
+async function admin(){
+ if(!fac())return shell('<div class="card">Faculty access only.</div>');
+ await loadMeta();loader=loadAdmin;
+ return shell(`<h1>Admin Panel</h1><p class="sub" id="cnt">Loading…</p>
+ <div class="row" style="margin-bottom:14px"><select style="width:150px" onchange="setA('d',this.value)">${dopts(aq.d,'All domains')}</select>
+ <select style="width:130px" onchange="setA('y',this.value)">${yopts(aq.y,'All years')}</select>
+ <select style="width:150px" onchange="setA('p',this.value)"><option value="">All departments</option>${meta.departments.map(x=>`<option ${aq.p==x?'selected':''}>${esc(x)}</option>`).join('')}</select>
+ <button class="btn o" onclick="exportCSV()">⬇ Export CSV</button><button class="btn o" onclick="location.href='/api/export/report'">📄 Summary report</button></div>
+ <div class="card tblw" id="res"><div class="ld">Loading…</div></div>`);
+}
+function setA(k,v){aq[k]=v;pg=1;loadAdmin()}
+const aParams=()=>({domain:aq.d,year_from:aq.y,year_to:aq.y,department:aq.p});
+function exportCSV(){location.href='/api/export/csv?'+qs(aParams())}   // same filters as the table
+async function loadAdmin(){
+ const box=$('#res');if(!box)return;
+ try{const d=await api('/api/projects?'+qs({...aParams(),page:pg,per_page:10}));pg=d.page;
+  $('#cnt').textContent=`Manage all projects · ${d.total} shown`;
+  box.innerHTML=`<table><tr><th>Title</th><th>Domain</th><th>Year</th><th>Uploader</th><th>Dept</th><th>Flags</th><th>Actions</th></tr>
+  ${d.items.map(p=>`<tr><td>${esc(p.title)}</td><td>${badge(p.domain)}</td><td>${p.year}</td><td>${esc(p.uploader_name)}</td><td>${esc(p.uploader_dept)}</td>
+  <td><button class="btn s ${p.featured?'':'o'}" onclick="flag(${p.id},'featured')">★ Featured</button> <button class="btn s ${p.verified?'':'o'}" onclick="flag(${p.id},'verified')">✔ Verified</button></td>
+  <td><button class="btn o s" onclick="detail(${p.id})">View</button> <button class="btn o s" onclick="go('edit/${p.id}')">Edit</button> <button class="btn d s" onclick="del(${p.id})">Delete</button></td></tr>`).join('')||'<tr><td colspan="7">No projects match these filters.</td></tr>'}</table>${pager(d)}`}
+ catch(e){box.innerHTML=failBox(e)}}
+async function flag(id,k){try{await api(`/api/projects/${id}/flag`,{json:{field:k}});loadAdmin()}catch(e){toast(e.message,'var(--er)')}}
+
+/* ---------- Router ---------- */
+const PUBLIC=['login','signup','forgot','reset','setup'];
+async function render(){
+ const my=++rid,r=route().split('/');pbar(1);
+ if(!me&&needSetup&&r[0]!='setup'){go('setup');return}
+ if(!me&&!needSetup&&r[0]=='setup'){go('login');return}
+ if(!me&&!PUBLIC.includes(r[0])){go('login');return}
+ if(me&&PUBLIC.includes(r[0])){go('dashboard');return}
+ const P={login:()=>authPage('login'),setup:()=>authPage('setup'),signup:()=>authPage('signup'),forgot:()=>authPage('forgot'),reset:()=>authPage('reset',decodeURIComponent(r[1]||'')),
+  dashboard,browse,add:()=>form(0),edit:()=>form(+r[1]),mine:()=>fac()?admin():mine(),admin};
+ let h;try{h=await (P[r[0]]||dashboard)()}catch(e){h=me?shell(failBox(e)):authPage('login')}
+ if(my!==rid)return;
+ pbar(0);const app=$('#app');app.className=render.last!==location.hash?'anim':'';render.last=location.hash;app.innerHTML=h;
+ document.querySelectorAll('.auth input').forEach(i=>i.onkeydown=ev=>{if(ev.key=='Enter'&&$('#go'))$('#go').click()});
+ if(loader&&['browse','mine','admin'].includes(r[0]))loader();
+ fx();
+}
+
+/* ---------- Boot: restore the server session, then render ---------- */
+(async()=>{try{me=(await api('/api/me')).user;await loadMeta()}catch(e){me=null;try{needSetup=(await api('/api/setup-status')).needed}catch(x){}}render()})();
+
+/* ---------- motion + polish layer ---------- */
+const greet=()=>{const h=new Date().getHours();return h<12?'Good morning':h<18?'Good afternoon':'Good evening'};
+function pbar(on){const b=$('#pbar');if(!b)return;if(on){b.style.opacity=1;b.style.width='70%'}else{b.style.width='100%';setTimeout(()=>{b.style.opacity=0;b.style.width=0},350)}}
+function theme(){const r=document.documentElement,d=r.dataset.theme=='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark';try{localStorage.setItem('fyp-theme',r.dataset.theme)}catch(e){}}
+(()=>{let t=null;try{t=localStorage.getItem('fyp-theme')}catch(e){}if(!t&&matchMedia('(prefers-color-scheme:dark)').matches)t='dark';if(t)document.documentElement.dataset.theme=t})();
+function fx(){
+ document.querySelectorAll('.anim .grid>*, .anim .hero>*').forEach((e,i)=>e.style.setProperty('--i',i));
+ document.querySelectorAll('.stat b[data-n]').forEach(b=>{const n=+b.dataset.n,t0=performance.now();delete b.dataset.n;
+  (function f(t){const p=Math.min(1,(t-t0)/1100);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})}
+new MutationObserver(()=>{const a=$('#app');a&&a.querySelector('.pc:not([data-fx])')&&document.querySelectorAll('.pc').forEach((e,i)=>{if(e.dataset.fx)return;e.dataset.fx=1;e.style.animation='rise .6s cubic-bezier(.2,.8,.2,1) backwards';e.style.animationDelay=(i%6)*70+'ms'})}).observe(document.body,{childList:true,subtree:true});
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+ c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+ if(c.classList.contains('pc')&&e.pointerType=='mouse'){c.style.setProperty('--ry',((x/r.width-.5)*8)+'deg');c.style.setProperty('--rx',((.5-y/r.height)*8)+'deg')}});
+document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.pc');if(c&&!c.contains(e.relatedTarget)){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')}});
+document.addEventListener('pointerdown',e=>{const b=e.target.closest&&e.target.closest('.btn');if(!b)return;const r=b.getBoundingClientRect(),s=Math.max(r.width,r.height),d=document.createElement('span');
+ d.className='rip';d.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;b.appendChild(d);setTimeout(()=>d.remove(),600)});
+</script></body></html>
+

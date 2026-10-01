@@ -1,0 +1,5 @@
+{
+  "functions": {
+    "app.py": { "includeFiles": "static/**" }
+  }
+}
