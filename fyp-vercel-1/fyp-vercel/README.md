@@ -45,6 +45,8 @@ CSV export (respects filters) and per-domain-per-year report · dark mode.
 | Trie | title prefix + keyword search | O(L + k) |
 | AVL tree | year index, range queries | O(log n + k) |
 | Max-heap | top-K domains | O(n + k log n) |
+##Demo Video
+https://github.com/user-attachments/assets/4c9948ce-79a3-4423-b529-2c8a0b0ff612
 
 ## Viva summary
 Each search narrows a set of project ids through the Trie, hash-map and AVL indexes, then intersects
