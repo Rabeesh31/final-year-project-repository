@@ -37,6 +37,10 @@ CSV export (respects filters) and per-domain-per-year report · dark mode.
 - `POST /api/projects/<id>/flag {"field":"featured"|"verified"}` (faculty)
 - `GET /api/analytics`, `/api/activity`, `/api/meta`, `/api/export/csv`, `/api/export/report`
 
+##Demo Video
+
+https://github.com/user-attachments/assets/3762c6e0-e565-40f4-8c9c-7c5e8854318a
+
 ## Data structures
 | Structure | Used for | Cost |
 |---|---|---|
@@ -45,8 +49,6 @@ CSV export (respects filters) and per-domain-per-year report · dark mode.
 | Trie | title prefix + keyword search | O(L + k) |
 | AVL tree | year index, range queries | O(log n + k) |
 | Max-heap | top-K domains | O(n + k log n) |
-##Demo Video
-https://github.com/user-attachments/assets/4c9948ce-79a3-4423-b529-2c8a0b0ff612
 
 ## Viva summary
 Each search narrows a set of project ids through the Trie, hash-map and AVL indexes, then intersects
